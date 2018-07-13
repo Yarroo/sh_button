@@ -1,0 +1,11 @@
+de:
+  sh_button:
+    share_to: Teilen via %{name}
+    sms: Sms
+    email: Email
+    twitter: Twitter
+    facebook: Facebook
+    vkontakte: Vkontakte
+    odnoklassniki: Odnoklassniki
+    whatsapp: WhatsApp
+    viber: Viber

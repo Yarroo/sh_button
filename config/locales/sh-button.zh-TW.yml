@@ -1,0 +1,11 @@
+'zh-TW':
+  sh_button:
+    share_to: 分享到 %{name}
+    sms: Sms
+    email: Email
+    twitter: Twitter
+    facebook: Facebook
+    vkontakte: Vkontakte
+    odnoklassniki: Odnoklassniki
+    whatsapp: WhatsApp
+    viber: Viber

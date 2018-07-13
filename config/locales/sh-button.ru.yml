@@ -1,0 +1,11 @@
+ru:
+  sh_button:
+    share_to: Поделиться в %{name}
+    sms: Sms
+    email: Email
+    twitter: Twitter
+    facebook: Facebook
+    vkontakte: Вконтакте
+    odnoklassniki: Однокласники
+    whatsapp: WhatsApp
+    viber: Viber
