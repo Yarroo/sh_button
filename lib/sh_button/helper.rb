@@ -1,5 +1,8 @@
 module ShButton
   module Helper
+
+    SH_BUTTON_NOT_POPUP = %w(email sms viber)
+
     def sh_button_tag(title = "", opts = {})
       opts[:allow_sites] ||= ShButton.config.allow_sites
 
@@ -8,8 +11,12 @@ module ShButton
 
       opts[:allow_sites].each do |site|
         link_title = t "sh_button.share_to", name: t("sh_button.#{site.downcase}")
+
+        anchor_classes = "sh-button-item sh-button-#{site}"
+        anchor_classes << ' sh-button-popup' unless SH_BUTTON_NOT_POPUP.include? site
+
         html << link_to(tag(:span, class: "sh-button-icon-#{site}"),share_link(site, title, opts[:url], opts[:image]),
-                        class: "sh-button-item sh-button-#{site}",title: link_title,)
+                        class: anchor_classes, title: link_title,)
       end
       html << "</div>"
       raw html.join("\n")
