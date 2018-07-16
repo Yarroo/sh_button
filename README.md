@@ -1,43 +1,109 @@
-# ShButton
+# SH_Button
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sh_button`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a gem to helper you quick create a share feature in you Rails apps.
 
-TODO: Delete this and the text above, and describe your gem
+# Sites list
 
-## Installation
+* Twitter
+* Facebook
+* Vkontakte
+* Odnoklassniki
+* Whatsapp
+* Viber
 
-Add this line to your application's Gemfile:
+## Install
+
+In your `Gemfile`:
 
 ```ruby
 gem 'sh_button'
 ```
 
-And then execute:
+And install it:
 
-    $ bundle
+```bash
+$ bundle install
+$ rails generate sh_button:install
+```
 
-Or install it yourself as:
+## Configure 
 
-    $ gem install sh_button
+You can config `config/initializers/sh_button.rb` to choose which site do you want to use:
+
+```ruby
+SocialShareButton.configure do |config|
+  config.allow_sites = %w(twitter facebook vkontakte)
+end
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+You need add require css,js file in your app assets files:
 
-## Development
+`app/assets/javascripts/application.coffee`
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```
+#= require sh-button
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+`app/assets/stylesheets/application.scss`
 
-## Contributing
+```
+*= require sh-button
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sh_button. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+In Rails 4.1.6 , use `@import` to require files:
 
-## License
+`app/assets/stylesheets/application.css.scss`
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```
+@import "sh-button";
+```
 
-## Code of Conduct
+Then you can use `social_share_button_tag` helper in views, for example `app/views/posts/show.html.erb`
 
-Everyone interacting in the ShButton project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/sh_button/blob/master/CODE_OF_CONDUCT.md).
+```erb
+<%= sh_button_tag(@post.title) %>
+```
+
+To specify sites at runtime:
+
+```erb
+<%= sh_button_tag(@post.title, :allow_sites => %w(twitter facebook)) %>
+```
+
+And you can custom rel attribute:
+
+```erb
+<%= sh_button_tag(@post.title, :rel => "twipsy") %>
+```
+
+You can also specify the URL that it links to:
+
+```erb
+<%= sh_button_tag(@post.title, :url => "http://myapp.com/foo/bar") %>
+```
+
+```erb
+<%= sh_button_tag(@post.title, :url => "http://myapp.com/foo/bar", :image => "http://foo.bar/images/a.jpg") %>
+```
+
+### Testing from localhost will not work
+
+You will need to test from a live site or Facebook will reject it; localhost will not work.
+
+
+## How to change icon size?
+
+Yes, you can override social-share-button base css to change the icon size, margin, and form.
+
+In you `app/assets/stylesheets/application.scss`:
+
+```scss
+.sh-button .sh-button-item {
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
+  margin-right: 6px;
+}
+```

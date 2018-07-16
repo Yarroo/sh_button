@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   # specify any dependencies here; for example:
   spec.files        = Dir.glob("{bin,lib,config,app/assets/javascripts,app/assets/stylesheets,app/assets/images}/**/*")
-  spec.files       += %w(README.md CHANGELOG.md)
+  spec.files       += %w(README.md)
   spec.add_development_dependency "rails"
   spec.add_runtime_dependency "coffee-rails"
 end
