@@ -1,3 +1,3 @@
 ShButton.configure do |config|
-  config.allow_sites = %w(sms email twitter facebook vkontakte odnoklassniki whatsapp viber)
+  config.allow_sites = %w(email twitter facebook vkontakte odnoklassniki sms whatsapp viber)
 end
