@@ -41,7 +41,7 @@ module ShButton
       when 'viber'
         "viber://forward?text=#{url}"
       when 'sms'
-        "sms:?body=#{title + url}"
+        "sms:?body=#{title} #{url}"
       end
     end
   end
