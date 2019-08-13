@@ -37,7 +37,7 @@ module ShButton
       when 'odnoklassniki'
         "https://connect.ok.ru/offer?url=#{url}&title=#{title}&imageUrl=#{img}"
       when 'whatsapp'
-        "https://wa.me/?text=#{url}"
+        "https://api.whatsapp.com/send?phone=&text=#{url}"
       when 'viber'
         "viber://forward?text=#{url}"
       when 'sms'
